@@ -1,0 +1,33 @@
+.container-fluid {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+.one {
+  height: 75vh;
+  float: left;
+  background-color: rgb(38, 91, 170);
+
+  .dashboard-title{
+    margin: 0;
+    text-align: center;
+    padding: 10px 0;
+    color: white;
+  }
+
+  a{
+    background-color: rgb(38, 91, 170);
+    color: white;
+  }
+  a:hover{
+    background-color: rgb(80, 128, 201);
+  }
+}
+
+.two {
+  overflow: auto;
+  overflow-x: hidden;
+  height: 75vh;
+}

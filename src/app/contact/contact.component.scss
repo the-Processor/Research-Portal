@@ -1,0 +1,47 @@
+$desktop-large: 1440px;
+$desktop: 1024px;
+$tablet: 770px;
+$mobile-large: 425px;
+$mobile-medium: 375px;
+$mobile-small: 320px;
+
+.contact-container{
+  width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+.example-card{
+  width: 40%;
+  height: fit-content;
+  margin: 20px auto;
+  text-align: center;
+  background-color: rgba(28, 73, 141, 0.925);
+  color: white;
+}
+img{
+  max-height: 300px;
+}
+.head{
+  display: block !important;
+}
+.title{
+  text-align: center;
+  margin: 0 auto;
+}
+p{
+  font-size: large;
+}
+
+@media only screen and (max-width: $mobile-large){
+  p{
+    font-size: small;
+  }
+  .example-card{
+    width: 80%;
+  }
+}
+@media only screen and (min-width: 425.1px) and (max-width: $tablet){
+  p{
+    font-size: medium;
+  }
+}

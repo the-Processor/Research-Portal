@@ -1,0 +1,19 @@
+.container{
+  width: 100%;
+  min-height: 100%;
+  // margin-left: 10%;
+}
+.myCards{
+  margin-top: 15px;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+}
+.myCards:last-child{
+  margin-bottom: 15px;
+}
+.heading{
+  padding: 0;
+  margin: 15px auto;
+  text-align: center;
+}

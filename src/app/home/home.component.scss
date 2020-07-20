@@ -1,0 +1,80 @@
+$desktop-large: 1440px;
+$desktop: 1024px;
+$tablet: 770px;
+$mobile-large: 425px;
+$mobile-medium: 375px;
+$mobile-small: 320px;
+
+.row{
+  padding: 10px 0;
+}
+.container{
+  padding-top: 10px;
+  min-height: 100%;
+}
+.logo img{
+  height: 200px;
+}
+div{
+  text-align: center;
+}
+.title h1{
+  width: 100%;
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+@media only screen and (max-width: $mobile-small){
+  .logo img{
+    height: 40px;
+  }
+  .title h1{
+    font-size: medium;
+    font-weight: bold;
+    line-height: normal;
+    letter-spacing: 0.1em;
+    padding: 0;
+  }
+}
+@media only screen and (min-width: 320.1px) and (max-width: $mobile-medium){
+  .logo img{
+    height: 80px;
+  }
+  .title h1{
+    font-size: large;
+    font-weight: bold;
+    line-height: normal;
+    letter-spacing: 0.1em;
+    padding: 0;
+  }
+}
+@media only screen and (min-width: 375.1px) and (max-width: $mobile-large){
+  .logo img{
+    height: 100px;
+  }
+  .title h1{
+    font-size: x-large;
+    font-weight: bold;
+    line-height: normal;
+    letter-spacing: 0.1em;
+    padding: 0;
+  }
+}
+@media only screen and (min-width: 1024.1px) and (max-width: $desktop-large){
+  .container{
+    font-size: large;
+  }
+  .logo img{
+    height: 250px;
+  }
+  .title h1{
+    font-family: 'Open Sans';
+    font-size: 45px;
+    font-weight: bold;
+    line-height: normal;
+    letter-spacing: 0.1em;
+    padding: 0;
+  }
+}

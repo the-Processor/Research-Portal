@@ -1,0 +1,48 @@
+<section class="container-fluid">
+  <div class="one" [ngStyle]="{'display': showDashboard ? 'block' : 'none'}">
+    <h1 class="dashboard-title">Dashboard</h1>
+      <div class="border-right" id="sidebar-wrapper">
+        <div class="list-group list-group-flush">
+          <a
+          class="list-group-item list-group-item-action"
+          [routerLink] = "['ask-query']"
+          routerLinkActive="active-link"
+          style="cursor: pointer;"
+          (click)="toggleBackdrop()"
+          >
+            Manage College Admins
+          </a>
+          <a
+          class="list-group-item list-group-item-action"
+          [routerLink] = "['publish-paper']"
+          style="cursor: pointer;"
+          (click)="toggleBackdrop()"
+          >
+            View College Admins
+          </a>
+          <a class="list-group-item list-group-item-action"
+          [routerLink]="['check-status']"
+          style="cursor: pointer;"
+          (click)="toggleBackdrop()">
+            Manage College Queries
+          </a>
+          <a class="list-group-item list-group-item-action"
+          [routerLink]="['check-status']"
+          style="cursor: pointer;"
+          (click)="toggleBackdrop()">
+            Manage Admin Notices
+          </a>
+          <a class="list-group-item list-group-item-action"
+          [routerLink]="['settings']"
+          style="cursor: pointer;"
+          (click)="toggleBackdrop()">
+            Settings
+          </a>
+        </div>
+      </div>
+  </div>
+  <div class="two">
+    <button type="button" (click)="toggleBackdrop()" style="display: inline;z-index: 40;"><i class="fa fa-home" style="font-size:36px; color: rgb(28, 73, 141);"></i></button>
+    <router-outlet></router-outlet>
+  </div>
+</section>
