@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <form class="form-inline myform">
     <select class="form-control mb-2">
-      <option value="" disabled selected hidden>Select Research Area</option>
+      <option value="" disabled selected hidden>All</option>
       <option value="faculty">Automobile Engineering</option>
       <option value="studentAdmin">Computer Engineering</option>
       <option value="faculty">Electrical Engineering</option>
@@ -12,19 +12,20 @@
     <div class="form-group mx-sm-3 mb-2">
       <input type="text" class="form-control" id="search" placeholder="Search...">
     </div>
-    <button type="button" class="btn btn-outline-success mb-2 search-butn">Search</button>
+    <button type="button" (click)="onClick()" class="btn btn-outline-success mb-2 search-butn">Search</button>
   </form>
   <hr>
   <mat-accordion>
-    <mat-expansion-panel>
+    <mat-expansion-panel *ngFor="let paper of papers">
       <mat-expansion-panel-header>
         <mat-panel-title>
-          <h2>Theoretical Research of Surface Roughness for HSM</h2>
+          <h2>{{paper.title}}</h2>
         </mat-panel-title>
         <mat-panel-description>
+          <i>{{paper.authorName}}</i>
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <p>I'm visible because I am open</p>
+      <p>{{paper.abstract}}</p>
     </mat-expansion-panel>
   </mat-accordion>
 </div>
