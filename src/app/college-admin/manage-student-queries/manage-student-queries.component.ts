@@ -27,7 +27,6 @@ export class ManageStudentQueriesComponent implements OnInit, OnDestroy {
   }
 
   onPost(form: NgForm, index: number){
-    console.log(form.value)
     this.queryService.toRepliedQueries(index, form.value.reply);
   }
 
