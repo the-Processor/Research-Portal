@@ -9,6 +9,22 @@
           style="cursor: pointer;"
           (click)="toggleBackdrop()"
           >
+            Ask Query
+          </a>
+          <a
+          class="list-group-item list-group-item-action"
+          [routerLink] = "['admin-queries']"
+          style="cursor: pointer;"
+          (click)="toggleBackdrop()"
+          >
+            Admin Queries
+          </a>
+          <a
+          class="list-group-item list-group-item-action"
+          [routerLink] = "['manage-students']"
+          style="cursor: pointer;"
+          (click)="toggleBackdrop()"
+          >
             Manage Students
           </a>
           <a
@@ -38,7 +54,7 @@
             Manage Students Notices
           </a>
           <a class="list-group-item list-group-item-action"
-          [routerLink]="['check-status']"
+          [routerLink]="['manage-student-queries']"
           style="cursor: pointer;"
           (click)="toggleBackdrop()">
             Manage Student Queries

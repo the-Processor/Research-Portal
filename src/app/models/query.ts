@@ -1,6 +1,9 @@
-export interface Query{
-  _id: string;
-  emailId: string;
-  question: string;
-  response?: string;
+export class Query{
+
+  constructor(
+    public _id: string,
+    public emailId: string,
+    public question: string,
+    public response?: string
+  ){}
 }

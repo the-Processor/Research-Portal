@@ -1,13 +1,13 @@
 <div class="container">
   <div class="heading">
-    <h2>FAQs</h2>
+    <h2>Admin FAQs</h2>
   </div>
-  <div class="card myCard" *ngFor="let query of repliedStudentQueries">
+  <div class="card myCard" *ngFor="let query of repliedAdminQueries">
     <div class="card-body">
       <h2 class="card-title">{{query.question}}</h2>
       <h3 class="card-subtitle text-muted"><i>{{query.emailId}}</i></h3>
       <p class="card-text">{{query.response}}</p>
     </div>
   </div>
-  <p *ngIf="repliedStudentQueries.length < 1" style="text-align: center;">No Replied Queries</p>
+  <p *ngIf="repliedAdminQueries.length < 1" style="text-align: center;">No Replied Queries</p>
 </div>

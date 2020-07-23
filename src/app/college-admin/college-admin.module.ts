@@ -4,10 +4,14 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { CollegeAdminRoutingModule } from './college-admin-routing.module';
 import { ManageNoticesComponent } from './manage-notices/manage-notices.component';
+import { AdminQueriesComponent } from './admin-queries/admin-queries.component';
+import { ManageStudentQueriesComponent } from './manage-student-queries/manage-student-queries.component';
 
 @NgModule({
   declarations: [
-    ManageNoticesComponent
+    ManageNoticesComponent,
+    AdminQueriesComponent,
+    ManageStudentQueriesComponent
   ],
   imports: [
     CommonModule,

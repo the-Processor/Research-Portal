@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="heading">
+    <h2>College Queries</h2>
+  </div>
+  <div class="all-cards" *ngFor="let query of queries; let i = index">
+    <div class="card myCard">
+      <div class="card-body">
+        <h2 class="card-title">{{query.question}}</h2>
+        <h3 class="card-subtitle text-muted"><i>{{query.emailId}}</i></h3>
+        <div class="card-actions">
+          <form #f="ngForm" (ngSubmit)="onPost(f,i)">
+            <div class="form-group">
+              <textarea name="reply" class="form-control" id="reply" rows="3" ngModel></textarea>
+            </div>
+            <div class="form-group">
+              <button
+                class="btn btn-success"
+                type="submit"
+              >Post Reply</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+  <p *ngIf="queries.length < 1">No Unreplied Queries!</p>
+</div>
+<!--  -->
