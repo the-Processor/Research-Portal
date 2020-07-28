@@ -1,10 +1,10 @@
 const express = require('express');
-const Query = require('../models/query');
+const AdminQuery = require('../models/admin-query');
 
 const router = express.Router();
 
 router.get('', (req, res, next) => {
-  Query.find()
+  AdminQuery.find()
   .then(queries => {
     res.status(200).json({
       message: "Success",
@@ -19,8 +19,8 @@ router.get('', (req, res, next) => {
 });
 
 router.post('', (req, res, next) => {
-  const query = new Query({
-    studEmail : req.body.email,
+  const query = new AdminQuery({
+    adminEmail : req.body.email,
     date : req.body.date,
     subject : req.body.subject,
     content: req.body.content
@@ -64,7 +64,7 @@ router.post('', (req, res, next) => {
 // });
 
 router.delete('/:id', (req, res, next) => {
-  Query.deleteOne({ _id : req.params.id })
+  AdminQuery.deleteOne({ _id : req.params.id })
   .then(result => {
     res.status(200).json({
       message: "Deleted Successfully",

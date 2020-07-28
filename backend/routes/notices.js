@@ -34,28 +34,28 @@ router.post('', (req, res, next) => {
   });
 });
 
-router.put('/:id', (req, res, next) => {
-  Notice.findByIdAndUpdate(
-    { _id : req.params.id},
-    {
-      date: req.body.date,
-      content : req.body.content
-    },
-    {new : true},
-    (err, response) => {
-      if(err){
-        res.status(500).json({
-          error: err
-        })
-      }
-      else{
-        res.status(201).json({
-          message: "Updated Successfully",
-          data: response
-        })
-      }
-    });
-});
+// router.put('/:id', (req, res, next) => {
+//   Notice.findByIdAndUpdate(
+//     { _id : req.params.id},
+//     {
+//       date: req.body.date,
+//       content : req.body.content
+//     },
+//     {new : true},
+//     (err, response) => {
+//       if(err){
+//         res.status(500).json({
+//           error: err
+//         })
+//       }
+//       else{
+//         res.status(201).json({
+//           message: "Updated Successfully",
+//           data: response
+//         })
+//       }
+//     });
+// });
 
 router.delete('/:id', (req, res, next) => {
   Notice.deleteOne({ _id : req.params.id })

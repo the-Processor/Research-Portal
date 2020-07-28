@@ -2,18 +2,25 @@ const mongoose = require('mongoose');
 const uniqueVal = require('mongoose-unique-validator');
 
 const userSchema = mongoose.Schema({
-  name: {type: String, required: true},
+  // person: {
+  //   name: {
+  //     type: String
+  //   },
+  //   email: {
+  //     type: String
+  //   }
+  // }
+  name: {
+    type: String,
+    required: true
+  },
   type: {
     type: String,
-    enum: ['facultyAdmin','studentAdmin','student','faculty'],
+    enum: ['webAdmin','collegeAdmin','student'],
     required: true
   },
   contact: {
     type: Number,
-    required: true
-  },
-  image: {
-    type: String,
     required: true
   },
   email: {
@@ -25,29 +32,52 @@ const userSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  qualification: {
+  address: {
+    building: {
+      type: String,
+      // required: true
+    },
+    street: {
+      type: String,
+      // required: true
+    },
+    city: {
+      type: String,
+      // required: true
+    },
+    district: {
+      type: String,
+      // required: true
+    },
+    pincode: {
+      type: Number,
+      // required: true
+    }
+  },
+
+  // building: {
+  //   type: String,
+  //   required: true
+  // },
+  // street: {
+  //   type: String,
+  //   required: true
+  // },
+  // city: {
+  //   type: String,
+  //   required: true
+  // },
+  // district: {
+  //   type: String,
+  //   required: true
+  // },
+  // pincode: {
+  //   type: Number,
+  //   required: true
+  // },
+  institute: {
     type: String,
-    default: null
-  },
-  designation: {
-    type: String,
-    default: null
-  },
-  experience: {
-    type: Number,
-    default: null
-  },
-  salary: {
-    type: Number,
-    default: null
-  },
-  class: {
-    type: Number,
-    default: null
-  },
-  division: {
-    type: String,
-    default: null
+    required: true
   }
 });
 

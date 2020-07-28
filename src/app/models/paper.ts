@@ -1,12 +1,22 @@
 export interface Paper{
-  // _id: string;
+  _id: string;
   title: string;
+  keywords: string[];
   areaOfResearch: string;
-  authorName: string;
-  abstract: string;
-  // authorInstitute: string;
-  // authorEmail: string;
-  // coAuthorName?: string[];
-  // coAuthorInstitute?: string[];
-  // coAuthorEmail?: string[];
+  author: {
+    name: string,
+    email: string,
+    institute: string,
+    contact: number
+  };
+  coAuthors: {
+    name: string,
+    email: string,
+    institute: string,
+    contact: number
+  }[];
+  publisher: string;
+  publicationDate: string;
+  paperPath: string;
+  paperStatusCode: number;
 }

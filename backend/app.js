@@ -7,6 +7,8 @@ const mongoose = require('mongoose');
 const noticeRoutes = require('./routes/notices');
 const usersRoutes = require('./routes/users');
 const queriesRoutes = require('./routes/queries');
+const adminQueryRoutes = require('./routes/admin-queries');
+const papersRoutes = require('./routes/papers');
 
 const app = express();
 
@@ -39,4 +41,7 @@ app.use((req, res, next) => {
 app.use('/api/v1/users', usersRoutes);
 app.use('/api/v1/notices', noticeRoutes);
 app.use('/api/v1/queries', queriesRoutes);
+app.use('/api/v1/admin-queries', adminQueryRoutes)
+app.use('/api/v1/papers', papersRoutes);
+
 module.exports = app;
