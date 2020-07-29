@@ -220,59 +220,59 @@ router.post('', (req, res, next) => {
 //   )
 // })
 
-// router.delete('/:id', (req, res, next) => {
-//   User.deleteOne({ _id : req.params.id }).then(
-//     (result) => {
-//       res.status(200).json({
-//         message: "User Deleted!",
-//         data: result
-//       }).catch(err => {
-//         res.status(400).json({
-//           error: err
-//         })
-//       })
-//     }
-//   )
-// });
+router.delete('/:id', (req, res, next) => {
+  User.deleteOne({ _id : req.params.id }).then(
+    (result) => {
+      res.status(200).json({
+        message: "User Deleted!",
+        data: result
+      }).catch(err => {
+        res.status(400).json({
+          error: err
+        })
+      })
+    }
+  )
+});
 
-// router.post('/login', (req, res, next) => {
-//   let fetchedUser;
-//   User.findOne({email : req.body.email}).then(
-//     fUser => {
-//       if(!fUser){
-//         return res.status(401).json({
-//           error: 'Authentication Failed! 1'
-//         })
-//       }
-//       fetchedUser = fUser;
-//       return bcrypt.compare(req.body.password, fUser.password);
-//     })
-//     .then(result => {
-//       if(!result){
-//         return res.status(401).json({
-//           error: 'Authentication Failed! 2'
-//         })
-//       }
-//       const token = jwt.sign(
-//         { email: fetchedUser.email, userId: fetchedUser._id },
-//         'Hey_this_is_my_angular_app_created_in_2020',
-//         { expiresIn: '1h' }
-//       );
-//       res.status(200).json({
-//         uid: fetchedUser._id,
-//         email: fetchedUser.email,
-//         name: fetchedUser.name.split(' ')[0],
-//         type: fetchedUser.type,
-//         token: token,
-//         expiresIn: 3600
-//       });
-//     })
-//     .catch(err => {
-//       return res.status(401).json({
-//         error: 'Authentication Failed! 3'
-//       })
-//     })
-// });
+router.post('/login', (req, res, next) => {
+  let fetchedUser;
+  User.findOne({email : req.body.email}).then(
+    fUser => {
+      if(!fUser){
+        return res.status(401).json({
+          error: 'Authentication Failed! 1'
+        })
+      }
+      fetchedUser = fUser;
+      return bcrypt.compare(req.body.password, fUser.password);
+    })
+    .then(result => {
+      if(!result){
+        return res.status(401).json({
+          error: 'Authentication Failed! 2'
+        })
+      }
+      const token = jwt.sign(
+        { email: fetchedUser.email, userId: fetchedUser._id },
+        'Hey_this_is_my_SIH2020_project_app_created_in_2020',
+        { expiresIn: '3h' }
+      );
+      res.status(200).json({
+        uid: fetchedUser._id,
+        email: fetchedUser.email,
+        name: fetchedUser.name.split(' ')[0],
+        type: fetchedUser.type,
+        token: token,
+        expiresIn: 3600*3
+      });
+    })
+    .catch(err => {
+      return res.status(401).json({
+        error: 'Authentication Failed! 3'
+      })
+    })
+});
 
 // router.get('/image/:id', (req, res, next) => {
 //   User.findOne({ _id: req.params.id })
@@ -295,58 +295,58 @@ router.post('', (req, res, next) => {
 //   });
 // });
 
-// router.put('/passwords/:id', (req, res, next) => {
-//   let fetchedUser;
-//   User.findOne({ _id: req.params.id })
-//   .then(
-//     fUser => {
-//       if(!fUser){
-//         return res.status(401).json({
-//           error: 'Authentication Failed! 1'
-//         })
-//       }
-//       fetchedUser = fUser;
-//       console.log(fetchedUser)
-//       console.log(req.body)
-//       return bcrypt.compare(req.body.oldPassword, fUser.password);
-//     }
-//   )
-//   .then(
-//     comparisonResult => {
-//       if(!comparisonResult){
-//         return res.status(401).json({
-//           error: 'Authentication Failed! 2'
-//         });
-//       }
-//       console.log(req.body.newPassword);
-//       bcrypt.hash(req.body.newPassword, 10)
-//       .then(
-//         hash => {
-//           User.updateOne(
-//             { _id: req.params.id },
-//             {
-//               password: hash
-//             }
-//           ).then( response => {
-//             res.status(201).json({
-//               message: 'Password Updated!',
-//               data: response
-//             });
-//           }).catch(err => {
-//             res.status(500).json({
-//               error : err
-//             });
-//           });
-//         }
-//       );
-//     }
-//   )
-//   .catch(err => {
-//     res.status(500).json({
-//       error : 'shit'
-//     });
-//   });
-// });
+router.put('/passwords/:id', (req, res, next) => {
+  let fetchedUser;
+  User.findOne({ _id: req.params.id })
+  .then(
+    fUser => {
+      if(!fUser){
+        return res.status(401).json({
+          error: 'Authentication Failed! 1'
+        })
+      }
+      fetchedUser = fUser;
+      console.log(fetchedUser)
+      console.log(req.body)
+      return bcrypt.compare(req.body.oldPassword, fUser.password);
+    }
+  )
+  .then(
+    comparisonResult => {
+      if(!comparisonResult){
+        return res.status(401).json({
+          error: 'Authentication Failed! 2'
+        });
+      }
+      console.log(req.body.newPassword);
+      bcrypt.hash(req.body.newPassword, 10)
+      .then(
+        hash => {
+          User.updateOne(
+            { _id: req.params.id },
+            {
+              password: hash
+            }
+          ).then( response => {
+            res.status(201).json({
+              message: 'Password Updated!',
+              data: response
+            });
+          }).catch(err => {
+            res.status(500).json({
+              error : err
+            });
+          });
+        }
+      );
+    }
+  )
+  .catch(err => {
+    res.status(500).json({
+      error : 'shit'
+    });
+  });
+});
 
 // router.put('/images/:id', upload.single('image'), (req, res, next) => {
 //   const url = req.protocol + '://' + req.get('host');

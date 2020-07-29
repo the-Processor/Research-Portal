@@ -66,14 +66,12 @@ export class LoginService{
       );
       this.loggedUser.next(authData);
       localStorage.setItem('userData', JSON.stringify(authData));
-      if (type === 'facultyAdmin'){
-        this.router.navigate(['/faculty-admin']);
-      }else if (type === 'studentAdmin'){
-        this.router.navigate(['/student-admin']);
+      if (type === 'webAdmin'){
+        this.router.navigate(['/web-admin']);
+      }else if (type === 'collegeAdmin'){
+        this.router.navigate(['/college-admin']);
       }else if (type === 'student'){
-        this.router.navigate(['/student']);
-      }else if (type === 'faculty'){
-        this.router.navigate(['/faculty']);
+        this.router.navigate(['/students']);
       }
       this.autoLogOut(expiresIn * 1000);
     }

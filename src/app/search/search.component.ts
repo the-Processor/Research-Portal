@@ -17,21 +17,21 @@ export class SearchComponent implements OnInit, OnDestroy {
   constructor(private paperService: PaperService) { }
 
   ngOnInit(): void {
-    this.papers = this.paperService.getPapers();
-    this.paperSub = this.paperService.papersUpdated.subscribe(
-      updPapers => {
-        this.papers = updPapers;
-      }
-    );
+    // this.papers = this.paperService.getPapers();
+    // this.paperSub = this.paperService.papersUpdated.subscribe(
+    //   updPapers => {
+    //     this.papers = updPapers;
+    //   }
+    // );
   }
 
   onClick(){
-    this.papers = this.papers.filter(paper => paper.areaOfResearch === 'computer');
-    this.paperService.papersUpdated.next(this.papers);
+    // this.papers = this.papers.filter(paper => paper.areaOfResearch === 'computer');
+    // this.paperService.papersUpdated.next(this.papers);
   }
 
   ngOnDestroy(){
-    this.paperSub.unsubscribe();
+    // this.paperSub.unsubscribe();
   }
 
 }
