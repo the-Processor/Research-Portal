@@ -1,0 +1,17 @@
+<div class="contain">
+    <mat-accordion multi="true" *ngIf="students.length>0">
+        <mat-expansion-panel *ngFor="let student of students; let i = index">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+            {{student.name}}
+            </mat-panel-title>
+            <mat-panel-description>
+            {{student.email}}&nbsp;|&nbsp;{{student.contact}}
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <button mat-raised-button color="primary">Edit</button>&nbsp;
+        <button mat-raised-button color="warn" (click)="onDelete(i)">Delete</button>
+        </mat-expansion-panel>
+    </mat-accordion>
+    <p *ngIf="students.length<1">There are no Student Records!</p>
+</div>

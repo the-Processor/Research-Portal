@@ -110,14 +110,12 @@ export class LoginService{
         this.loggedUser.next(loadedUser);
         const expDuration = new Date(userData.expDate).getTime() - new Date().getTime();
         this.autoLogOut(expDuration);
-        if (loadedUser.type === 'facultyAdmin'){
-          this.router.navigate(['/faculty-admin']);
-        }else if (loadedUser.type === 'studentAdmin'){
-          this.router.navigate(['/student-admin']);
+        if (loadedUser.type === 'webAdmin'){
+          this.router.navigate(['/web-admin']);
+        }else if (loadedUser.type === 'collegeAdmin'){
+          this.router.navigate(['/college-admin']);
         }else if (loadedUser.type === 'student'){
-          this.router.navigate(['/student']);
-        }else if (loadedUser.type === 'faculty'){
-          this.router.navigate(['/faculty']);
+          this.router.navigate(['/students']);
         }
       }
     }

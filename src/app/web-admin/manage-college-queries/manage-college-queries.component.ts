@@ -2,7 +2,7 @@ import { Component, OnInit, OnDestroy } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Subscription } from 'rxjs';
 
-import { NewAdminQueryService } from 'src/app/services/new-admin-query.service';
+// import { NewAdminQueryService } from 'src/app/services/new-admin-query.service';
 import { Query } from '../../models/query';
 
 @Component({
@@ -16,19 +16,19 @@ export class ManageCollegeQueriesComponent implements OnInit, OnDestroy {
 
   queries: Query[] = [];
 
-  constructor(private queryService: NewAdminQueryService){}
+  // constructor(private queryService: NewAdminQueryService){}
 
   ngOnInit(): void {
-    this.queries = this.queryService.getQueries();
-    this.querySub = this.queryService.queryUpdated.subscribe(
-      updQueries => {
-        this.queries = updQueries;
-      }
-    );
+    // this.queries = this.queryService.getQueries();
+    // this.querySub = this.queryService.queryUpdated.subscribe(
+    //   updQueries => {
+    //     this.queries = updQueries;
+    //   }
+    // );
   }
 
   onPost(form: NgForm, index: number){
-    this.queryService.toRepliedQueries(index, form.value.reply);
+    // this.queryService.toRepliedQueries(index, form.value.reply);
   }
 
   ngOnDestroy(){

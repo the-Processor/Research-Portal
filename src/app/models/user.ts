@@ -1,12 +1,19 @@
-export interface User{
-  _id: string;
-  emailId: string;
-  password: string;
-  firstName: string;
-  middleName: string;
-  lastName: string;
-  contact: number;
-  city: string;
-  pincode: number;
-  state: string;
+export class User{
+
+  constructor(
+    public _id: string,
+    public emailId: string,
+    public password: string,
+    public name: string,
+    public type: string,
+    public contact: number,
+    public address: {
+      building: string,
+      street: string,
+      city: string,
+      district: string,
+      pincode: number
+    },
+    public institute: string
+  ){}
 }

@@ -1,20 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { mimeType } from 'src/app/shared/mime-type.validator';
 import { User } from 'src/app/models/user';
-import { ManageCollegeAdminService } from 'src/app/services/manage-college-admin.service';
+import { ManageStudentService } from 'src/app/services/manage-students.service';
 
 @Component({
-  selector: 'app-manage-college-admins',
-  templateUrl: './manage-college-admins.component.html',
-  styleUrls: ['./manage-college-admins.component.scss']
+  selector: 'app-manage-students',
+  templateUrl: './manage-students.component.html',
+  styleUrls: ['./manage-students.component.scss']
 })
-export class ManageCollegeAdminsComponent implements OnInit {
+export class ManageStudentsComponent implements OnInit {
 
   form: FormGroup;
   imagePreview: string;
 
-  constructor(private manageCollegeAdminService: ManageCollegeAdminService) { }
+  constructor(private manageStudentService: ManageStudentService) { }
 
   ngOnInit(): void {
     this.form = new FormGroup({
@@ -41,7 +40,7 @@ export class ManageCollegeAdminsComponent implements OnInit {
       return;
     }
     const name = `${this.form.value.firstName} ${this.form.value.middleName} ${this.form.value.lastName}`;
-    const newStaff = new User(
+    const newStudent = new User(
       null,
       this.form.value.email,
       this.form.value.email,
@@ -57,8 +56,8 @@ export class ManageCollegeAdminsComponent implements OnInit {
       },
       this.form.value.institute
     );
-    this.manageCollegeAdminService.postCollegeAdmin(newStaff);
-    // this.form.reset();
+    this.manageStudentService.postStudent(newStudent);
+    this.form.reset();
   }
 
   // onImagePicked(event: Event) {
@@ -75,5 +74,6 @@ export class ManageCollegeAdminsComponent implements OnInit {
   onClear(){
     this.form.reset();
   }
+
 
 }

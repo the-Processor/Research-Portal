@@ -7,7 +7,6 @@ const mongoose = require('mongoose');
 const noticeRoutes = require('./routes/notices');
 const usersRoutes = require('./routes/users');
 const queriesRoutes = require('./routes/queries');
-const adminQueryRoutes = require('./routes/admin-queries');
 const papersRoutes = require('./routes/papers');
 
 const app = express();
@@ -17,7 +16,7 @@ const app = express();
 
 // Connect to local mongo db
 const LOCAL_URL = 'mongodb://127.0.0.1:27017/research-portal';
-mongoose.connect(LOCAL_URL, { useNewUrlParser: true, useUnifiedTopology: true });
+mongoose.connect(LOCAL_URL, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false });
 
 
 // Connect to ATLAS
@@ -41,7 +40,6 @@ app.use((req, res, next) => {
 app.use('/api/v1/users', usersRoutes);
 app.use('/api/v1/notices', noticeRoutes);
 app.use('/api/v1/queries', queriesRoutes);
-app.use('/api/v1/admin-queries', adminQueryRoutes)
 app.use('/api/v1/papers', papersRoutes);
 
 module.exports = app;

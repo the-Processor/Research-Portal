@@ -41,6 +41,17 @@ const router = express.Router();
 // ==============================================================================
 
 router.get('',(req, res, next) => {
+//   User.find({type: "webAdmin"}, function(err, user) 
+//  {
+//     if (err)
+//     {
+//         res.send(err);
+//     }
+//     res.status(200).json({
+//       message: "success",
+//       data: user
+//     });
+//  });
   User.find().then(
     documents => {
       console.log(documents)
@@ -67,6 +78,20 @@ router.get('',(req, res, next) => {
       });
     }
   )
+});
+
+router.get('/:type',(req, res, next) => {
+  User.find({type: req.params.type}, function(err, user) 
+ {
+    if (err)
+    {
+        res.send(err);
+    }
+    res.status(200).json({
+      message: "success",
+      data: user
+    });
+ });
 });
 
 // router.post('', upload.single('image'), (req, res, next) => {
@@ -103,7 +128,7 @@ router.get('',(req, res, next) => {
 // });
 
 router.post('', (req, res, next) => {
-  console.log(req.body.password)
+  console.log(req.body)
   bcrypt.hash(req.body.password, 10)
   .then(hash => {
     const user = new User({
@@ -114,14 +139,14 @@ router.post('', (req, res, next) => {
       name: req.body.name,
       type: req.body.type,
       contact: req.body.contact,
-      email: req.body.email,
+      email: req.body.emailId,
       password: hash,
       address: {
-        building: req.body.building,
-        street: req.body.street,
-        city: req.body.city,
-        district: req.body.district,
-        pincode: req.body.pincode
+        building: req.body.address.building,
+        street: req.body.address.street,
+        city: req.body.address.city,
+        district: req.body.address.district,
+        pincode: req.body.address.pincode
       },
       institute: req.body.institute
     });

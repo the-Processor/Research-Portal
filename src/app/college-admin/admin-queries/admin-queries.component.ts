@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 
-import { RepliedAdminQueryService } from 'src/app/services/replied-admin-query.service';
+// import { RepliedAdminQueryService } from 'src/app/services/replied-admin-query.service';
 import { Subscription } from 'rxjs';
 import { Query } from 'src/app/models/query';
 
@@ -16,16 +16,16 @@ export class AdminQueriesComponent implements OnInit, OnDestroy {
   repliedAdminQueries: Query[] = [];
 
   constructor(
-    private repliedAdminQueryService: RepliedAdminQueryService
+    // private repliedAdminQueryService: RepliedAdminQueryService
   ) { }
 
   ngOnInit(): void {
-    this.repliedAdminQueries = this.repliedAdminQueryService.getQueries();
-    this.repliedQueriesSub = this.repliedAdminQueryService.repliedQueryUpdated.subscribe(
-      updQueries => {
-        this.repliedAdminQueries = updQueries;
-      }
-    );
+    // this.repliedAdminQueries = this.repliedAdminQueryService.getQueries();
+    // this.repliedQueriesSub = this.repliedAdminQueryService.repliedQueryUpdated.subscribe(
+    //   updQueries => {
+    //     this.repliedAdminQueries = updQueries;
+    //   }
+    // );
   }
 
   ngOnDestroy(){

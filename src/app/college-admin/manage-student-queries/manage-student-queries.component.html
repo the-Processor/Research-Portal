@@ -8,7 +8,7 @@
         <h2 class="card-title">{{query.question}}</h2>
         <h3 class="card-subtitle text-muted"><i>{{query.emailId}}</i></h3>
         <div class="card-actions">
-          <form #f="ngForm" (ngSubmit)="onPost(f,i)">
+          <form #f="ngForm" (ngSubmit)="onReply(f,i)">
             <div class="form-group">
               <textarea name="reply" class="form-control" id="reply" rows="3" ngModel></textarea>
             </div>

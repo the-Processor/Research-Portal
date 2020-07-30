@@ -1,0 +1,18 @@
+<div class="contain">
+    <h2 style="text-align: center;">College Admins</h2>
+    <mat-accordion class="accordian" multi="true" *ngIf="collegeAdmins.length>0" style="width: 80%;">
+        <mat-expansion-panel *ngFor="let collegeAdmin of collegeAdmins; let i = index">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+            {{collegeAdmin.name}}
+            </mat-panel-title>
+            <mat-panel-description>
+            {{collegeAdmin.email}}&nbsp;|&nbsp;{{collegeAdmin.contact}}
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+        <button mat-raised-button color="primary">Edit</button>&nbsp;
+        <button mat-raised-button color="warn" (click)="onDelete(i)">Delete</button>
+        </mat-expansion-panel>
+    </mat-accordion>
+    <p *ngIf="collegeAdmins.length<1">There are no College Admin Records!</p>
+</div>

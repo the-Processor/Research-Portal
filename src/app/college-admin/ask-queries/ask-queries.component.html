@@ -1,0 +1,17 @@
+<div class="contain">
+    <h2 style="text-align: center;">Ask Admin Query</h2>
+    <form (ngSubmit) = "onSubmit()" #f = "ngForm">
+        <textarea
+        class="form-control"
+        rows="5"
+        id="question"
+        name="question"
+        ngModel
+        required></textarea>
+        <br>
+        <button class="btn btn-success" type="submit" [disabled]="!f.valid">Submit</button>&nbsp;
+        <button type="button" class="btn btn-danger" (click)="onClear()">Clear</button>
+    </form>
+    <br>
+    <app-view-queries></app-view-queries>
+</div>
