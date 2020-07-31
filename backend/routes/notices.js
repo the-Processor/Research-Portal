@@ -2,8 +2,8 @@ const express = require('express');
 const Notice = require('../models/notice');
 const router = express.Router();
 
-router.get('', (req, res, next) => {
-  Notice.find().then(
+router.get('/:type', (req, res, next) => {
+  Notice.find({ type: req.params.type }).then(
     notices => {
       res.status(200).json({
         message: "success",
@@ -17,6 +17,8 @@ router.post('', (req, res, next) => {
   const notice = new Notice(
     {
       date: req.body.date,
+      type: req.body.type,
+      heading: req.body.heading,
       content: req.body.content
     }
   );

@@ -1,1 +1,23 @@
-<p>check-status works!</p>
+<div class="contain">
+    <h2 style="text-align: center;">Check Paper Status</h2>
+    <form (ngSubmit) = "onSubmit()" #f = "ngForm">
+        <label for="status">Paper Id</label>
+        <input
+        class="form-control"
+        rows="5"
+        id="paperId"
+        name="paperId"
+        ngModel
+        required>
+        <br>
+        <button class="btn btn-success" type="submit" [disabled]="!f.valid">Submit</button>&nbsp;
+        <button type="button" class="btn btn-danger" (click)="onClear()">Clear</button>
+        <br>
+        <br>
+        <div class="status" *ngIf="status">
+            <p>{{status}}</p>
+        </div>
+    </form>
+    <br>
+    <!-- <app-view-queries></app-view-queries> -->
+</div>

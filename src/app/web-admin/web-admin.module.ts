@@ -7,12 +7,14 @@ import { ManageCollegeAdminsComponent } from './manage-college-admins/manage-col
 import { ViewCollegeAdminsComponent } from './view-college-admins/view-college-admins.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatButtonModule } from '@angular/material/button';
+import { ManageAdminNoticesComponent } from './manage-admin-notices/manage-admin-notices.component';
 
 @NgModule({
   declarations: [
   ManageCollegeQueriesComponent,
   ManageCollegeAdminsComponent,
-  ViewCollegeAdminsComponent],
+  ViewCollegeAdminsComponent,
+  ManageAdminNoticesComponent],
   imports: [
     CommonModule,
     FormsModule,

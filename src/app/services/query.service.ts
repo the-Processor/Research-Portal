@@ -67,9 +67,16 @@ export class QueryService implements OnInit{
         );
     }
 
+    getQueryByEmail(email){
+        return this.http.get<{message: string, data: Query[]}>(
+            'http://localhost:3000/api/v1/queries/' + email
+        )
+    }
+
     // =============================POST=======================================
 
     postQuery(newQuery){
+        console.log(newQuery)
         this.http.post<{message: string, data: Query}>(
             'http://localhost:3000/api/v1/queries/',
             newQuery

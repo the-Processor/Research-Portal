@@ -1,0 +1,15 @@
+input.ng-invalid.ng-touched,textarea.ng-invalid.ng-touched{
+    border: 1px solid red;
+  }
+.contain{
+    width: 70%;
+    margin: 0 auto;
+}  
+.status{
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+    color: #004085;
+    background-color: #cce5ff;
+    border-color: #b8daff;
+}

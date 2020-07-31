@@ -1,0 +1,34 @@
+<div class="container-fluid">
+    <form #f="ngForm" (ngSubmit)="onPostNotice()">
+      <label for="heading">Heading</label>
+      <input
+        type="text"
+        class="form-control"
+        name="heading"
+        ngModel
+        required
+      >
+      <label for="name">Notice Content</label>
+      <textarea
+      name="content"
+      class="form-control"
+      rows="5"
+      ngModel
+      required
+      ></textarea>
+      <br>
+      <button
+        type="submit"
+        class="btn btn-success"
+        [disabled]="!f.valid">
+        Post
+      </button>&nbsp;
+      <button type="button" class="btn btn-danger" (click)="onClear()">Clear</button>
+  </form>
+  </div>
+  <!-- <br> -->
+  
+  <!-- <app-view-notices></app-view-notices> -->
+  
+  <!--  -->
+  

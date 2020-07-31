@@ -1,16 +1,13 @@
-<mat-accordion multi="true" *ngIf="queries.length>0">
-    <mat-expansion-panel *ngFor="let query of queries; let i = index">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Date: {{query.date}}
-        </mat-panel-title>
-        <mat-panel-description>
-          {{query.subject}}&nbsp;|&nbsp;{{query.studEmail}}
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <p>{{query.content}}</p>
-      <button mat-raised-button color="warn" (click)="onDelete(i)">Delete</button>
-    </mat-expansion-panel>
-  </mat-accordion>
-  <p *ngIf="queries.length<1" style="text-align: center;">There are no queries!</p>
-  
+<div class="container">
+  <div class="heading">
+    <h2>FAQs</h2>
+  </div>
+  <div class="card myCard" *ngFor="let query of repliedAdminQueries">
+    <div class="card-body">
+      <h2 class="card-title">{{query.question}}</h2>
+      <h3 class="card-subtitle text-muted"><i>{{query.email}}</i></h3>
+      <p class="card-text">{{query.response}}</p>
+    </div>
+  </div>
+  <p *ngIf="repliedAdminQueries.length < 1" style="text-align: center;">No Replied Queries</p>
+</div>

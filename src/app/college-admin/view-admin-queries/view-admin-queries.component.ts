@@ -12,44 +12,57 @@ import { LoginService } from 'src/app/services/login.service';
 })
 export class ViewAdminQueriesComponent implements OnInit {
 
-  private loggedUser: AuthData;
+  // private loggedUser: AuthData;
 
-  private logSub: Subscription;
-  private querySub: Subscription;
-  private delQuerySub: Observable<{message: string, data: any}>;
+  // private logSub: Subscription;
+  // private querySub: Subscription;
+  // private delQuerySub: Observable<{message: string, data: any}>;
 
-  queries: Query[] = [];
+  // queries: Query[] = [];
+
+  // constructor(
+  //   private queryService: QueryService,
+  //   private logService: LoginService
+  //   ) { }
+
+  // ngOnInit(): void {
+  //   this.logSub = this.logService.loggedUser.subscribe(
+  //     authData => {
+  //       this.loggedUser = authData;
+  //     }
+  //   );
+  //   this.queryService.getNewAdminQueries;
+  //   this.querySub = this.queryService.newAdminUpdated.subscribe(
+  //     updatedQueries => {
+  //       this.queries = updatedQueries;
+  //     }
+  //   );
+  // }
+
+  // ngOnDestroy(){
+  //   this.querySub.unsubscribe();
+  //   this.logSub.unsubscribe();
+  // }
+
+  
+  repliedQueriesSub: Subscription;
+
+  repliedAdminQueries: Query[] = [];
 
   constructor(
-    private queryService: QueryService,
-    private logService: LoginService
-    ) { }
+    private queryService: QueryService
+  ) { }
 
   ngOnInit(): void {
-    this.logSub = this.logService.loggedUser.subscribe(
-      authData => {
-        this.loggedUser = authData;
-      }
-    );
-    this.queryService.getNewAdminQueries;
-    this.querySub = this.queryService.newAdminUpdated.subscribe(
-      updatedQueries => {
-        this.queries = updatedQueries.filter(query => query.emailId === this.loggedUser.email);
-      }
-    );
-  }
-
-  onDelete(index: number){
-    this.queryService.deleteQuery(index).subscribe(
-      response => {
-        this.queries
+    this.queryService.getOldAdminQueries();
+    this.repliedQueriesSub = this.queryService.oldAdminUpdated.subscribe(
+      updQueries => {
+        this.repliedAdminQueries = updQueries;
       }
     );
   }
 
   ngOnDestroy(){
-    this.querySub.unsubscribe();
-    this.logSub.unsubscribe();
   }
 
 }

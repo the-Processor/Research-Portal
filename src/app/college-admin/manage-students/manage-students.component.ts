@@ -45,7 +45,7 @@ export class ManageStudentsComponent implements OnInit {
       this.form.value.email,
       this.form.value.email,
       name,
-      'collegeAdmin', // this.form.value.type
+      'student', // this.form.value.type
       this.form.value.contact,
       {
         building : this.form.value.building,

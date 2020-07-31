@@ -39,7 +39,25 @@ router.get('/replied/:type', (req, res, next) => {
   });
 });
 
+//  Get by email
+
+router.get('/:email', (req, res, next) => {
+  Query.find({ email: req.params.email, response: {$exists: false} })
+  .then(queries => {
+    res.status(200).json({
+      message: "Success",
+      data: queries
+    });
+  })
+  .catch(err => {
+    res.status(404).json({
+      error: err
+    });
+  });
+});
+
 router.post('', (req, res, next) => {
+  console.log(req.body)
   const query = new Query({
     email : req.body.email,
     date : req.body.date,

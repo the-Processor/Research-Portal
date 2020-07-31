@@ -28,7 +28,7 @@ mongoose.connect(LOCAL_URL, { useNewUrlParser: true, useUnifiedTopology: true, u
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
-app.use('/images', express.static(path.join('backend/public/users/images')));
+app.use('/uploads', express.static(path.join('backend/uploads')));
 
 app.use((req, res, next) => {
   res.setHeader('Access-Control-Allow-Origin','*');

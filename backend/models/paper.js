@@ -36,19 +36,19 @@ const paperSchema = mongoose.Schema({
   },
   coAuthor1: {
     type: {
-      name: {
+      name1: {
         type: String,
         required: true
       },
-      email: {
+      email1: {
         type: String,
         required: true
       },
-      institute: {
+      institute1: {
         type: String,
         required: true
       },
-      contact: {
+      contact1: {
         type: Number,
         required: true
       }
@@ -56,19 +56,19 @@ const paperSchema = mongoose.Schema({
   },
   coAuthor2: {
     type: {
-      name: {
+      name2: {
         type: String,
         required: true
       },
-      email: {
+      email2: {
         type: String,
         required: true
       },
-      institute: {
+      institute2: {
         type: String,
         required: true
       },
-      contact: {
+      contact2: {
         type: Number,
         required: true
       }
@@ -88,7 +88,7 @@ const paperSchema = mongoose.Schema({
   },
   paperStatusCode: {
     type: Number,
-    enum: [0,1,2,3,4],
+    enum: [0,1,2],
     required: true
   },
 });

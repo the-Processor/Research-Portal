@@ -21,6 +21,7 @@ export class ViewCollegeAdminsComponent implements OnInit, OnDestroy {
     this.collegeAdminSub = this.manageCollegeAdminService.collegeAdminsUpdated.subscribe(
       updAdmins => {
         this.collegeAdmins = updAdmins;
+        console.log(this.collegeAdmins)
       }
     );
   }

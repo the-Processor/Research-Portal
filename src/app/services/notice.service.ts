@@ -1,47 +1,86 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { Subject } from 'rxjs';
 
 import { Notice } from '../models/notice';
+import { HttpClient } from '@angular/common/http';
+import { strict } from 'assert';
+import { identifierModuleUrl } from '@angular/compiler';
 
 @Injectable({providedIn: 'root'})
 
-export class NoticeService{
+export class NoticeService implements OnInit{
 
-  noticesUpdated = new Subject<Notice[]>();
+  studentNoticesUpdated = new Subject<Notice[]>();
+  adminNoticesUpdated = new Subject<Notice[]>();
 
-  notices: Notice[] = [
-    {
-      refno: 'asidjf9we87rhfsdigfisadjhfs',
-      date: '2020-07-19',
-      heading: 'Important Notice for Authors!',
-      content: 'This is regarding the papers submitted...'
-    },
-    {
-      refno: 'poupojnv7947fnwsjkvmp;wspoe',
-      date: '2020-07-19',
-      heading: 'Check Status of your paper!',
-      content: 'Hello Researcher, we are happy to announce that now you can check the status of your paper right from the website instead of calling us. We would request you to go and check your paper status on the below link...'
-    },
-    {
-      refno: 'asdbfrsbwertwberethyteyj4556',
-      date: '2020-07-17',
-      heading: 'Articles being accepted online!',
-      content: 'We have started accepting articles by online means directly through website...'
-    }
-  ];
+  studentNotices: Notice[] = [];
+  adminNotices: Notice[] = [];
 
-  getNotices(){
-    return this.notices.slice();
+  constructor(private http: HttpClient){}
+
+  ngOnInit(){}
+
+  getStudentNotices(){
+    return this.http.get<{message: string, data: Notice[]}>(
+      'http://localhost:3000/api/v1/notices/student'
+    ).subscribe(
+      response => {
+        this.studentNotices = response.data;
+        return this.studentNoticesUpdated.next(this.studentNotices.slice());
+      }
+    );
+  }
+
+  getAdminNotices(){
+    return this.http.get<{message: string, data: Notice[]}>(
+      'http://localhost:3000/api/v1/notices/admin'
+    ).subscribe(
+      response => {
+        this.adminNotices = response.data;
+        return this.adminNoticesUpdated.next(this.adminNotices.slice());
+      }
+    );
   }
 
   addNotice(newNotice: Notice){
-    this.notices.push(newNotice);
-    this.noticesUpdated.next(this.notices.slice());
+    this.http.post<{message: string, data: Notice}>(
+      'http://localhost:3000/api/v1/notices',
+      newNotice
+    ).subscribe(
+      response => {
+        if(response.data.type === 'admin'){
+          this.adminNotices.push(response.data);
+          return this.adminNoticesUpdated.next(this.adminNotices.slice());
+      }else if(response.data.type === 'student'){
+          this.studentNotices.push(response.data);
+          return this.studentNoticesUpdated.next(this.studentNotices.slice());
+      } 
+      }
+    );
   }
 
-  deleteNotice(index: number){
-    this.notices.splice(index, 1);
-    this.noticesUpdated.next(this.notices.slice());
+  deleteNotice(index: number, type: string){
+    if(type === 'student'){
+      const id = this.studentNotices[index].refno;
+      this.http.delete<{message: string, data: any}>(
+        'http://localhost:3000/api/v1/notices' + id
+      ).subscribe(
+        res => {
+          this.studentNotices.splice(index, 1);
+          this.studentNoticesUpdated.next(this.studentNotices.slice());
+        }
+      );
+    }else if(type === 'admin'){
+      const id = this.adminNotices[index].refno;
+      this.http.delete<{message: string, data: any}>(
+        'http://localhost:3000/api/v1/notices' + id
+      ).subscribe(
+        res => {
+          this.adminNotices.splice(index, 1);
+          this.adminNoticesUpdated.next(this.adminNotices.slice());
+        }
+      );
+    }
   }
 
 }

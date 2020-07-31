@@ -183,25 +183,34 @@ router.post('', (req, res, next) => {
   });
 });
 
-// router.put('/:id', upload.single('image'), (req, res, next) => {
+// router.put('/:id', (req, res, next) => {
+//   User.findByIdAndUpdate(
+//     { _id : req.params.id },
+//     {
+//       $set: {password: ha}
+//     },
+//     { new : true },
+//     (err, response) => {
+//       if(err){
+//         res.status(500).json({
+//           error: err
+//         });
+//       }else{
+//         res.status(201).json({
+//           message: "Query Updated!",
+//           data: response
+//         });
+//       }
+//     }
+//   );
+// });
+// router.put('/:id', (req, res, next) => {
 //   bcrypt.hash(req.body.password, 10)
 //   .then(hash => {
-//     const url = req.protocol + '://' + req.get('host');
 //     User.findByIdAndUpdate(
 //       { _id : req.params.id },
 //       {
-//         name: req.body.name,
-//         type: req.body.type,
-//         contact: req.body.contact,
-//         image: url + '/images/' + req.file.filename,
-//         email: req.body.email,
-//         password: hash,
-//         qualification: req.body.qualification,
-//         designation: req.body.designation,
-//         experience: req.body.experience,
-//         salary: req.body.salary,
-//         class: req.body.class,
-//         division: req.body.division
+//         $set: {password: hash}
 //       },
 //       { new: true },
 //       (err, updatedUserData) => {
@@ -220,6 +229,55 @@ router.post('', (req, res, next) => {
 //     );
 //   });
 // });
+
+router.put('/:id', (req, res, next) => {
+  let fetchedUser;
+  User.findOne({_id : req.params.id}).then(
+    fUser => {
+      if(!fUser){
+        return res.status(401).json({
+          error: 'Authentication Failed! 1'
+        })
+      }
+      fetchedUser = fUser;
+      return bcrypt.compare(req.body.currentPassword, fUser.password);
+    })
+    .then(result => {
+      if(!result){
+        return res.status(401).json({
+          error: 'Authentication Failed! 2'
+        })
+      }
+      bcrypt.hash(req.body.newPassword, 10)
+      .then(hash => {
+        User.findByIdAndUpdate(
+          { _id : req.params.id },
+          {
+            $set: {password: hash}
+          },
+          { new: true },
+          (err, updatedUserData) => {
+            if(err){
+              res.status(500).json({
+                error: err
+              });
+            }else{
+              // console.log(req.file)
+              res.status(201).json({
+                message: 'User Updated!',
+                data: updatedUserData
+              });
+            }
+          }
+        );
+      });
+    })
+    .catch(err => {
+      return res.status(401).json({
+        error: 'Authentication Failed! 3'
+      })
+    })
+});
 
 // router.patch('/:id', upload.single('image'), (req, res, next) => {
 //   const user = new User()

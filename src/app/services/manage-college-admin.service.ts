@@ -16,7 +16,7 @@ export class ManageCollegeAdminService{
     getCollegeAdmins(){
         // get logic
         this.http.get<{message: string, data: User[]}>(
-            'http://localhost:3000/api/v1/users/collegeAdmins'
+            'http://localhost:3000/api/v1/users/collegeAdmin'
         ).subscribe(
             fetchedCollegeAdmins => {
                 this.collegeAdmins = fetchedCollegeAdmins.data;
@@ -55,17 +55,6 @@ export class ManageCollegeAdminService{
         )
     }
 
-    updatePassword(id: string, oldPass: string, newPass: string){
-        this.http.put<{message: string, data: any}>(
-          'http://localhost:3000/api/v1/users/passwords/' + id,
-          {
-            oldPassword: oldPass,
-            newPassword: newPass
-          }
-        ).subscribe(response => {
-          console.log(response.message);
-        });
-      }
 
     deleteCollegeAdmin(index: number){
         const id = this.collegeAdmins[index]._id;

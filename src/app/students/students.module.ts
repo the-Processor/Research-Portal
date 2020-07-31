@@ -6,6 +6,8 @@ import { AskQueryComponent } from './ask-query/ask-query.component';
 import { ViewQueriesComponent } from './view-queries/view-queries.component';
 import { PublishPaperComponent } from './publish-paper/publish-paper.component';
 import { CheckStatusComponent } from './check-status/check-status.component';
+import { MatButtonModule } from '@angular/material/button';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -17,7 +19,9 @@ import { CheckStatusComponent } from './check-status/check-status.component';
     CommonModule,
     FormsModule,
     ReactiveFormsModule,
-    StudentRoutingModule
+    StudentRoutingModule,
+    MatButtonModule,
+    MatExpansionModule
   ]
 })
 

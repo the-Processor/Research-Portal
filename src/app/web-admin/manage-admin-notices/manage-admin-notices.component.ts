@@ -1,17 +1,15 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { NgForm } from '@angular/forms';
 import { AdjustDayAndMonth } from 'src/app/shared/adjust-day-month';
+import { NgForm } from '@angular/forms';
 import { Notice } from 'src/app/models/notice';
 import { NoticeService } from 'src/app/services/notice.service';
 
-
-
 @Component({
-  selector: 'app-manage-notices',
-  templateUrl: './manage-notices.component.html',
-  styleUrls: ['./manage-notices.component.scss']
+  selector: 'app-manage-admin-notices',
+  templateUrl: './manage-admin-notices.component.html',
+  styleUrls: ['./manage-admin-notices.component.scss']
 })
-export class ManageNoticesComponent implements OnInit {
+export class ManageAdminNoticesComponent implements OnInit {
 
   private adjust = new AdjustDayAndMonth();
 
@@ -32,7 +30,7 @@ export class ManageNoticesComponent implements OnInit {
       const newNotice = new Notice(
         null,
         `${new Date().getFullYear()}-${this.adjust.month}-${this.adjust.day}`,
-        'student',
+        'admin',
         this.noticeForm.value.heading,
         this.noticeForm.value.content
       );

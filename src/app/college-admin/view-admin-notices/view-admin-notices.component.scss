@@ -1,20 +1,16 @@
-
 .container{
     width: 100%;
     min-height: 100%;
+    // margin-left: 10%;
   }
-  .myCard{
+  .myCards{
     margin-top: 15px;
     margin-left: auto;
     margin-right: auto;
     width: auto;
-    height: fit-content;
   }
-  .myCard:last-child{
+  .myCards:last-child{
     margin-bottom: 15px;
-  }
-  .card-title{
-    margin: 0;
   }
   .heading{
     padding: 0;

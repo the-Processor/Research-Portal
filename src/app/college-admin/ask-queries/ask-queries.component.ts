@@ -40,7 +40,7 @@ export class AskQueriesComponent implements OnInit {
       null,
       this.loggedUser.email,
       date,
-      'student',
+      'admin',
       this.queryForm.value.question
     );
     console.log(newQuery);

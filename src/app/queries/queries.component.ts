@@ -1,6 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Query } from '../models/query';
 import { Subscription } from 'rxjs';
+import { QueryService } from '../services/query.service';
 // import { RepliedStudentQueryService } from '../services/replied-student-query.service';
 
 @Component({
@@ -15,20 +16,19 @@ export class QueriesComponent implements OnInit, OnDestroy {
   repliedStudentQueries: Query[] = [];
 
   constructor(
-    // private repliedStudentQueryService: RepliedStudentQueryService
+    private queryService: QueryService
   ) { }
 
   ngOnInit(): void {
-    // this.repliedStudentQueries = this.repliedStudentQueryService.getQueries();
-    // this.repliedQueriesSub = this.repliedStudentQueryService.repliedQueryUpdated.subscribe(
-    //   updQueries => {
-    //     this.repliedStudentQueries = updQueries;
-    //   }
-    // );
+    this.queryService.getOldStudentQueries();
+    this.repliedQueriesSub = this.queryService.oldStudentUpdated.subscribe(
+      updQueries => {
+        this.repliedStudentQueries = updQueries;
+      }
+    );
   }
 
   ngOnDestroy(){
-    this.repliedQueriesSub.unsubscribe();
   }
 
 }

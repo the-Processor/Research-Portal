@@ -1,1 +1,28 @@
-<p>user-settings works!</p>
+<div class="container-fluid">
+    <form [formGroup]="form" (ngSubmit)="onSave()">
+          <h2>Change Password</h2>
+          <h3>&#40;Mandatory to change if new user!!!&#41;</h3>
+          <div class="form-group">
+            <label for="currentpass">Current Password</label>
+            <input class="form-control" type="password" formControlName="currentPassword">
+          </div>
+          <div class="form-group">
+            <label for="newpass">New Password</label>
+            <input class="form-control" type="password" formControlName="newPassword" minlength="6">
+          </div>
+          <div class="form-group">
+            <label for="retypepass">Retype New Password</label>
+            <input class="form-control" type="password" formControlName="retypePassword">
+          </div>
+          <button
+            class="btn btn-success"
+            type="submit"
+            [disabled] = "!(form.get('currentPassword').value !== '' && form.get('currentPassword').dirty && form.get('currentPassword').valid && form.get('newPassword').value !== '' && form.get('newPassword').dirty && form.get('newPassword').valid && form.get('retypePassword').value !== '' && form.get('retypePassword').dirty && form.get('retypePassword').valid)"
+          >
+            Save Changes
+          </button>&nbsp;
+    </form>
+  </div>
+  
+  <!-- (!form.get('currentPassword').dirty && !form.get('currentPassword').valid || !form.get('newPassword').dirty || !form.get('newPassword').valid) || (!form.get('retypePassword').dirty || !form.get('retypePassword').valid) &&  -->
+  

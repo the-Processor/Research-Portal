@@ -126,4 +126,16 @@ export class LoginService{
       }, expDuration);
     }
 
+    updatePassword(id: string, oldPass: string, newPass: string){
+      this.http.put<{message: string, data: any}>(
+        'http://localhost:3000/api/v1/users/' + id,
+        {
+          currentPassword: oldPass,
+          newPassword: newPass
+        }
+      ).subscribe(response => {
+        console.log(response.message);
+      });
+    }
+
 }

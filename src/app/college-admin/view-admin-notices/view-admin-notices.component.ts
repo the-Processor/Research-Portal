@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { NoticeService } from '../services/notice.service';
-import { Notice } from '../models/notice';
 import { Subscription } from 'rxjs';
+import { Notice } from 'src/app/models/notice';
+import { NoticeService } from 'src/app/services/notice.service';
 
 @Component({
-  selector: 'app-news',
-  templateUrl: './news.component.html',
-  styleUrls: ['./news.component.scss']
+  selector: 'app-view-admin-notices',
+  templateUrl: './view-admin-notices.component.html',
+  styleUrls: ['./view-admin-notices.component.scss']
 })
-export class NewsComponent implements OnInit {
+export class ViewAdminNoticesComponent implements OnInit {
 
   noticeSub: Subscription;
 
@@ -17,8 +17,8 @@ export class NewsComponent implements OnInit {
   constructor(private noticeService: NoticeService) { }
 
   ngOnInit(): void {
-    this.noticeService.getStudentNotices();
-    this.noticeSub = this.noticeService.studentNoticesUpdated.subscribe(
+    this.noticeService.getAdminNotices();
+    this.noticeSub = this.noticeService.adminNoticesUpdated.subscribe(
       updatedNotices => {
         this.notices = updatedNotices;
       }
